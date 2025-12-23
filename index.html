@@ -3,58 +3,469 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Esher Kebab House</title>
-  <meta name="description" content="Esher Kebab House — kebabs, wraps, burgers. 66 High St, Esher KT10 9QS. Call 01372 469408." />
+  <title>Esher Kebab House | Kebabs, Wraps & Burgers | Esher</title>
+  <meta name="description" content="Esher Kebab House — kebabs, wraps & burgers in Esher. 66 High St, Esher KT10 9QS. Call 01372 469408. Open late Fri–Sat." />
+  <meta name="theme-color" content="#0b0b0b" />
+
+  <!-- Social preview -->
+  <meta property="og:title" content="Esher Kebab House" />
+  <meta property="og:description" content="Fresh kebabs, wraps & burgers. Call 01372 469408. 66 High St, Esher KT10 9QS." />
+  <meta property="og:type" content="website" />
+
+  <!-- Local business schema (helps Google understand the business) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Restaurant",
+    "name":"Esher Kebab House",
+    "telephone":"+441372469408",
+    "address":{
+      "@type":"PostalAddress",
+      "streetAddress":"66 High St",
+      "addressLocality":"Esher",
+      "postalCode":"KT10 9QS",
+      "addressCountry":"GB"
+    },
+    "servesCuisine":["Kebab","Turkish","Fast Food"],
+    "priceRange":"££",
+    "url":"https://emarriott123.github.io/esher-kebab-house/"
+  }
+  </script>
+
   <style>
-    body{font-family:Arial,system-ui,-apple-system,Segoe UI,Roboto;margin:0;background:#0b0b0b;color:#f2f2f2}
-    .wrap{max-width:1000px;margin:0 auto;padding:18px}
-    .card{background:#141414;border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:16px;margin:12px 0}
-    h1,h2{margin:0 0 10px}
-    .muted{color:#bdbdbd}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    @media (max-width:850px){.grid{grid-template-columns:1fr}}
-    .item{display:flex;justify-content:space-between;gap:10px;padding:12px;border-radius:14px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.03)}
-    .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-    .btn{display:inline-block;padding:12px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);font-weight:700;color:#fff;text-decoration:none}
-    .cta{background:linear-gradient(135deg,#ffb000,#ff5a00);border:none;color:#141414}
-    .small{font-size:13px;color:#bdbdbd;line-height:1.5}
+    :root{
+      --bg:#0b0b0b;
+      --card:#141414;
+      --text:#f2f2f2;
+      --muted:#bdbdbd;
+      --line:rgba(255,255,255,.10);
+      --accent:#ffb000;
+      --accent2:#ff5a00;
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background:
+        radial-gradient(900px 600px at 10% 10%, rgba(255,176,0,.12), transparent 55%),
+        radial-gradient(900px 600px at 90% 20%, rgba(255,90,0,.10), transparent 55%),
+        var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:1100px; margin:0 auto; padding:18px}
+    .nav{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(10px);
+      background: rgba(11,11,11,.70);
+      border-bottom:1px solid var(--line);
+    }
+    .navin{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:12px 18px}
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{
+      width:38px; height:38px; border-radius:14px;
+      display:grid; place-items:center;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color:#111; font-weight:900;
+      letter-spacing:.5px;
+    }
+    .brand .name{font-weight:900; line-height:1.1}
+    .brand .tag{font-size:12px; color:var(--muted)}
+    .links{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    .pill{
+      padding:10px 12px; border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      font-weight:800; font-size:13px;
+    }
+    .pill:hover{border-color:rgba(255,255,255,.22)}
+    .pill.cta{
+      border:none;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color:#111;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:16px;
+      padding:16px 0 6px;
+    }
+    @media (max-width: 980px){ .hero{grid-template-columns:1fr} }
+
+    .card{
+      background: rgba(20,20,20,.92);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding:18px;
+      box-shadow: 0 18px 55px rgba(0,0,0,.35);
+    }
+    h1{margin:0 0 10px; font-size:clamp(30px, 4vw, 46px); line-height:1.05}
+    h2{margin:0 0 10px; font-size:22px}
+    .sub{margin:0 0 14px; color:var(--muted); line-height:1.5}
+    .badges{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px}
+    .badge{
+      font-size:12px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color:#ddd;
+      font-weight:700;
+    }
+    .btnrow{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+    .btn{
+      display:inline-block;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      font-weight:900;
+      font-size:14px;
+    }
+    .btn:hover{border-color:rgba(255,255,255,.22)}
+    .btn.cta{
+      border:none;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color:#141414;
+    }
+
+    .heroimg{
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      overflow:hidden;
+      position:relative;
+      min-height: 260px;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.85)),
+        url("https://images.unsplash.com/photo-1604908176997-125f25cc5000?auto=format&fit=crop&w=1400&q=70");
+      background-size: cover;
+      background-position:center;
+    }
+    .heroimg .inner{
+      position:absolute; inset:0;
+      padding:18px;
+      display:flex; flex-direction:column; justify-content:flex-end;
+      gap:10px;
+    }
+    .bigcall{
+      display:flex; gap:10px; flex-wrap:wrap;
+      align-items:center;
+    }
+    .callchip{
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(0,0,0,.35);
+      font-weight:900;
+    }
+    .small{color:var(--muted); font-size:13px; line-height:1.5}
+    .section{padding:10px 0}
+    .grid2{display:grid; grid-template-columns: 1fr 1fr; gap:16px}
+    @media (max-width: 980px){ .grid2{grid-template-columns:1fr} }
+
+    .info{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+      margin-top:10px;
+    }
+    @media (max-width: 980px){ .info{grid-template-columns:1fr} }
+    .kv{padding:12px; border-radius:16px; border:1px solid var(--line); background: rgba(255,255,255,.03)}
+    .k{font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.14em}
+    .v{font-weight:900; margin-top:5px}
+
+    .hours{display:grid; gap:10px; margin-top:8px}
+    .row{
+      display:flex; justify-content:space-between; gap:10px;
+      padding:12px; border-radius:16px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    .row b{font-weight:900}
+    .menugrid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+    @media (max-width: 980px){ .menugrid{grid-template-columns:1fr} }
+    .menucat{
+      padding:14px;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    .menucat h3{margin:0 0 8px; font-size:16px}
+    ul{margin:0; padding-left:18px; color:#ddd}
+    li{margin:6px 0}
+    .note{
+      margin-top:10px;
+      padding:12px;
+      border-radius:16px;
+      border:1px dashed rgba(255,255,255,.18);
+      color:var(--muted);
+      background: rgba(255,255,255,.02);
+      font-size:13px;
+    }
+
+    .mapwrap{
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      overflow:hidden;
+      background:#0f0f0f;
+    }
+    iframe{width:100%; height:360px; border:0}
+    .footer{padding:18px 0 34px; color:var(--muted); font-size:13px}
+    .hr{height:1px; background: rgba(255,255,255,.08); margin:14px 0}
   </style>
 </head>
+
 <body>
-  <div class="wrap">
-    <div class="card">
-      <h1>Esher Kebab House</h1>
-      <p class="muted">Kebabs • Wraps • Burgers</p>
-
-      <div class="btnrow">
-        <a class="btn cta" href="tel:+441372469408">Call: 01372 469408</a>
-        <a class="btn" href="https://www.google.com/maps?q=66+High+St,+Esher+KT10+9QS" target="_blank" rel="noopener">Get directions</a>
+  <div class="nav">
+    <div class="navin">
+      <div class="brand">
+        <div class="logo">EK</div>
+        <div>
+          <div class="name">Esher Kebab House</div>
+          <div class="tag">Kebabs • Wraps • Burgers</div>
+        </div>
       </div>
-
-      <p class="small" style="margin-top:10px;">66 High St, Esher KT10 9QS</p>
-    </div>
-
-    <div class="card" id="hours">
-      <h2>Opening hours</h2>
-      <div style="display:grid;gap:10px;">
-        <div class="item"><div><b>Monday</b><div class="small">11:00am – 12:00am</div></div></div>
-        <div class="item"><div><b>Tuesday</b><div class="small">11:00am – 12:00am</div></div></div>
-        <div class="item"><div><b>Wednesday</b><div class="small">11:00am – 12:00am</div></div></div>
-        <div class="item"><div><b>Thursday</b><div class="small">11:00am – 12:00am</div></div></div>
-        <div class="item"><div><b>Friday</b><div class="small">11:00am – 2:00am</div></div></div>
-        <div class="item"><div><b>Saturday</b><div class="small">11:00am – 2:00am</div></div></div>
-        <div class="item"><div><b>Sunday</b><div class="small">12:00pm – 12:00am</div></div></div>
-      </div>
-      <p class="small" style="margin-top:10px;">Opening hours may vary on bank holidays.</p>
-    </div>
-
-    <div class="card">
-      <h2>Menu</h2>
-      <p class="small">Menu shown without prices (Deliveroo prices differ). Call to confirm current prices.</p>
-      <div class="small">
-        <b>Popular:</b> Chicken Kebab, Doner Kebab, Chicken Shawarma, Charcoal Special, Mixed Kebab, 1/4 Pounder w/ Cheese, Chicken Wrap.
+      <div class="links">
+        <a class="pill" href="#menu">Menu</a>
+        <a class="pill" href="#hours">Hours</a>
+        <a class="pill" href="#findus">Find us</a>
+        <a class="pill cta" href="tel:+441372469408">Call now</a>
       </div>
     </div>
   </div>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="card">
+        <h1>Fresh, filling & fast — your local kebab spot in Esher.</h1>
+        <p class="sub">
+          Homemade kebabs prepared daily and cooked fresh to order.
+          Quick collection, easy directions, and open late on Fridays & Saturdays.
+        </p>
+
+        <div class="btnrow">
+          <a class="btn cta" href="tel:+441372469408">Call: 01372 469408</a>
+          <a class="btn" href="https://www.google.com/maps?q=66+High+St,+Esher+KT10+9QS" target="_blank" rel="noopener">Get directions</a>
+          <!-- Optional: add your ordering links later -->
+          <!-- <a class="btn" href="YOUR_DELIVEROO_LINK" target="_blank" rel="noopener">Order on Deliveroo</a> -->
+        </div>
+
+        <div class="badges">
+          <span class="badge">Open late Fri–Sat</span>
+          <span class="badge">Great for collection</span>
+          <span class="badge">Family favourites</span>
+          <span class="badge">Fast service</span>
+        </div>
+
+        <div class="info" style="margin-top:14px;">
+          <div class="kv">
+            <div class="k">Address</div>
+            <div class="v">66 High St, Esher KT10 9QS</div>
+          </div>
+          <div class="kv">
+            <div class="k">Phone</div>
+            <div class="v"><a href="tel:+441372469408">01372 469408</a></div>
+          </div>
+          <div class="kv">
+            <div class="k">Best time</div>
+            <div class="v">Evenings & late nights</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="heroimg" aria-label="Kebab house hero image">
+        <div class="inner">
+          <div class="bigcall">
+            <span class="callchip">Call to order: 01372 469408</span>
+            <span class="callchip">Open late Fri–Sat</span>
+          </div>
+          <div class="small">
+            Tip for the owner: this site drives direct calls & directions (no marketplace commission).
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOURS + MAP -->
+    <section class="section grid2" id="hours">
+      <div class="card">
+        <h2>Opening hours</h2>
+        <div class="hours">
+          <div class="row"><b>Monday</b><span>11:00am – 12:00am</span></div>
+          <div class="row"><b>Tuesday</b><span>11:00am – 12:00am</span></div>
+          <div class="row"><b>Wednesday</b><span>11:00am – 12:00am</span></div>
+          <div class="row"><b>Thursday</b><span>11:00am – 12:00am</span></div>
+          <div class="row"><b>Friday</b><span>11:00am – 2:00am</span></div>
+          <div class="row"><b>Saturday</b><span>11:00am – 2:00am</span></div>
+          <div class="row"><b>Sunday</b><span>12:00pm – 12:00am</span></div>
+        </div>
+        <div class="note">Opening hours may vary on bank holidays.</div>
+      </div>
+
+      <div class="card" id="findus">
+        <h2>Find us</h2>
+        <p class="small" style="margin-top:0">
+          Tap directions for instant navigation, or call to order.
+        </p>
+        <div class="btnrow">
+          <a class="btn cta" href="tel:+441372469408">Call now</a>
+          <a class="btn" href="https://www.google.com/maps?q=66+High+St,+Esher+KT10+9QS" target="_blank" rel="noopener">Open in Google Maps</a>
+        </div>
+
+        <div class="mapwrap" style="margin-top:12px;">
+          <!-- Google Maps embed for the address -->
+          <iframe
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=66%20High%20St%2C%20Esher%20KT10%209QS&output=embed">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <section class="section" id="menu">
+      <div class="card">
+        <h2>Menu</h2>
+        <p class="small" style="margin-top:0">
+          Menu shown without prices (delivery platforms may differ). Call to confirm current prices.
+        </p>
+
+        <div class="menugrid">
+          <div class="menucat">
+            <h3>Specials</h3>
+            <ul>
+              <li><b>Best K Special</b> (shish, chicken, kofte, doner, shawarma, hummus, salad, chips, pitta, rice, sauces, drink)</li>
+              <li><b>Charcoal Special</b> (shish, kofte, chicken, doner, shawarma, salad, pitta, sauce) — <i>free baklava</i></li>
+              <li><b>Mixed Kebab</b> (doner, chicken kebab & kofte in a box)</li>
+            </ul>
+          </div>
+
+          <div class="menucat">
+            <h3>Kebabs</h3>
+            <ul>
+              <li>Chicken Kebab (charcoal grilled breast)</li>
+              <li>Doner Kebab (minced lamb slices)</li>
+              <li>Chicken Shawarma (marinated chicken slices)</li>
+              <li>Shish (Lamb) Kebab (charcoal grilled cubes)</li>
+              <li>Kofte Kebab (seasoned minced lamb)</li>
+            </ul>
+          </div>
+
+          <div class="menucat">
+            <h3>Combination Kebabs</h3>
+            <ul>
+              <li>Chicken (Skewers) & Doner (Lamb)</li>
+              <li>Shish (Lamb) & Doner</li>
+              <li>Shish (Lamb) & Chicken</li>
+              <li>Doner & Kofte</li>
+              <li>Chicken & Kofte</li>
+              <li>Shawarma & Halloumi</li>
+              <li>Any Combination of 3</li>
+            </ul>
+          </div>
+
+          <div class="menucat">
+            <h3>Burgers</h3>
+            <ul>
+              <li>1/4 Pounder Burger with Cheese</li>
+              <li>1/4 Burger (No Cheese)</li>
+              <li>1/2 Pounder Burger with Cheese</li>
+              <li>Chicken Fillet Burger</li>
+              <li>Veggie Burger</li>
+            </ul>
+          </div>
+
+          <div class="menucat">
+            <h3>Wraps</h3>
+            <ul>
+              <li>Chicken Wrap</li>
+              <li>Doner Wrap</li>
+              <li>Chicken Shawarma Wrap</li>
+              <li>Lamb Shish Wrap</li>
+              <li>Kofte Wrap</li>
+              <li>Any Combination of 2 in Wrap</li>
+              <li>Chicken Wrap Twist</li>
+            </ul>
+          </div>
+
+          <div class="menucat">
+            <h3>Vegetarian</h3>
+            <ul>
+              <li>Halloumi Wrap</li>
+              <li>Falafel Wrap (with hummus & salad)</li>
+              <li>Hummus</li>
+              <li>Cacik (Tzatziki)</li>
+              <li>Greek Salad</li>
+              <li>Hummus Wrap with Salad</li>
+              <li>Veggie Burger</li>
+            </ul>
+          </div>
+
+          <div class="menucat">
+            <h3>Fish & Chicken</h3>
+            <ul>
+              <li>Cod & Chips</li>
+              <li>10 Scampi & Chips</li>
+              <li>Chicken Nuggets & Chips (10)</li>
+            </ul>
+          </div>
+
+          <div class="menucat">
+            <h3>Kids Menu</h3>
+            <ul>
+              <li>Cheeseburger, Chips & Drink</li>
+              <li>Doner Meat, Chips & Drink</li>
+              <li>Chicken Nuggets, Chips & Drink</li>
+            </ul>
+          </div>
+
+          <div class="menucat">
+            <h3>Extras</h3>
+            <ul>
+              <li>Chips / Cheesy Chips / Chips in Pitta</li>
+              <li>Doner Meat & Chips / Mix Meat & Chips / Shawarma Meat & Chips</li>
+              <li>Mozzarella Sticks / Onion Rings / Jalapeño Cheese Flamers</li>
+              <li>Rice / Chips & Salad in Pitta</li>
+              <li>Calamari</li>
+            </ul>
+          </div>
+
+          <div class="menucat">
+            <h3>Drinks & Sweets</h3>
+            <ul>
+              <li>Baklava</li>
+              <li>Coca-Cola / Diet Coke / Coke Zero / Fanta / Sprite / Pepsi / Rio</li>
+              <li>Still / Sparkling Water</li>
+              <li>Red Bull</li>
+              <li>Ayran (Turkish yoghurt drink)</li>
+              <li>Aloe Vera Drink / Capri-Sun / Apple Juice</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="note">
+          Want to impress even more? Add a “Download Menu (PDF)” button and a “Leave a Google Review” button.
+          If you give me the correct prices later, you can update them in 5 minutes.
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <div class="hr"></div>
+      <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+        <div>© <span id="y"></span> Esher Kebab House</div>
+        <div>66 High St, Esher KT10 9QS • <a href="tel:+441372469408">01372 469408</a></div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
